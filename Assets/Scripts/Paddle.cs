@@ -12,7 +12,8 @@ public class Paddle : MonoBehaviour {
     private float maxUnitLength = 15f;
 
     // Update is called once per frame
-    void Update () {
+    void Update()
+    {
         var mouseX = Input.mousePosition.x / Screen.width * this.xUnitLength;
         Vector2 paddlePosition = new Vector2(transform.position.x, transform.position.y);
         paddlePosition.x = Mathf.Clamp(mouseX, this.minUnitLength, this.maxUnitLength);
