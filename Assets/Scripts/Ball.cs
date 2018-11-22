@@ -11,14 +11,21 @@ public class Ball : MonoBehaviour
     private float xPush = 2f;
     [SerializeField]
     private float yPush = 15f;
+    [SerializeField]
+    private AudioClip[] audios;
+
     private Vector2 paddleAndBallOffset;
     private bool ballResting;
+    private AudioSource audioSource;
+    private Rigidbody2D rigidBodySource;
 
     // Use this for initialization
     void Start()
     {
-        this.paddleAndBallOffset = transform.position - this.paddle.transform.position;
+        this.paddleAndBallOffset = base.transform.position - this.paddle.transform.position;
         this.ballResting = true;
+        this.audioSource = base.GetComponent<AudioSource>();
+        this.rigidBodySource = base.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -35,10 +42,19 @@ public class Ball : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             this.ballResting = false;
-            this.GetComponent<Rigidbody2D>().velocity = new Vector2(this.xPush, this.yPush);
+            this.rigidBodySource.velocity = new Vector2(this.xPush, this.yPush);
         }
     }
 
     private void LockBallToPaddle() =>
-        this.transform.position = (Vector2)this.paddle.transform.position + this.paddleAndBallOffset;
+        base.transform.position = (Vector2)this.paddle.transform.position + this.paddleAndBallOffset;
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (!this.ballResting)
+        {
+            AudioClip randomAudio = this.audios[Random.Range(0, this.audios.Length)];
+            this.audioSource.PlayOneShot(randomAudio);
+        }
+    }
 }

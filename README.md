@@ -11,3 +11,4 @@ Shawnkoon version of popular block breaker game built with Unity.
 
 - Game was designed by [Tutorial](https://www.udemy.com/unitycourse/) on Udemy.
 - Sprite assets are distributed by `Rick Davidson`.
+- Audio assets are distributed by `Rick Davidson`.
