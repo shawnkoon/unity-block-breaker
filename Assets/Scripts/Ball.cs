@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ball : MonoBehaviour {
+public class Ball : MonoBehaviour
+{
 
     [SerializeField]
     private Paddle paddle;
@@ -38,8 +39,6 @@ public class Ball : MonoBehaviour {
         }
     }
 
-    private void LockBallToPaddle()
-    {
+    private void LockBallToPaddle() =>
         this.transform.position = (Vector2)this.paddle.transform.position + this.paddleAndBallOffset;
-    }
 }
