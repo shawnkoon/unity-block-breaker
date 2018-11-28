@@ -8,10 +8,12 @@ public class Block : MonoBehaviour
     private AudioClip destroySound;
 
     private Level level;
+    private GameStatus gameStatus;
 
     private void Start()
     {
         this.level = FindObjectOfType<Level>();
+        this.gameStatus = FindObjectOfType<GameStatus>();
         this.level.RegisterBlock();
     }
 
@@ -19,6 +21,7 @@ public class Block : MonoBehaviour
     {
         AudioSource.PlayClipAtPoint(destroySound, Camera.main.transform.position);
         Destroy(this.gameObject);
+        this.gameStatus.IncrementScore();
         this.level.UnRegisterBlock();
     }
 }
