@@ -9,7 +9,7 @@ public class Block : MonoBehaviour
 
     private Level level;
 
-    public void Start()
+    private void Start()
     {
         this.level = FindObjectOfType<Level>();
         this.level.RegisterBlock();
@@ -19,5 +19,6 @@ public class Block : MonoBehaviour
     {
         AudioSource.PlayClipAtPoint(destroySound, Camera.main.transform.position);
         Destroy(this.gameObject);
+        this.level.UnRegisterBlock();
     }
 }
