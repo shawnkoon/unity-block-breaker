@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameStatus : MonoBehaviour {
 
@@ -14,11 +15,19 @@ public class GameStatus : MonoBehaviour {
     [SerializeField]
     private int currentScore = 0;
 
-    // Update is called once per frame
-    private void Update () => Time.timeScale = this.gameSpeed;
+    [SerializeField]
+    private TextMeshProUGUI scoreText;
+
+    private void Start()
+    {
+        this.scoreText.text = this.currentScore.ToString();
+    }
+
+    private void Update() => Time.timeScale = this.gameSpeed;
 
     public void IncrementScore()
     {
         this.currentScore += this.scoreScale;
+        this.scoreText.text = this.currentScore.ToString();
     }
 }

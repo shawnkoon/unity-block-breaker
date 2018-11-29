@@ -51,3 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adff6c346277f479c877b294f0ac7539, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameSpeed: 0.8
+  scoreScale: 72
+  currentScore: 0
+  scoreText: {fileID: 0}
