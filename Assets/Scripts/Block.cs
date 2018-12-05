@@ -8,12 +8,12 @@ public class Block : MonoBehaviour
     private AudioClip destroySound;
 
     private Level level;
-    private GameStatus gameStatus;
+    private GameSession gameStatus;
 
     private void Start()
     {
         this.level = FindObjectOfType<Level>();
-        this.gameStatus = FindObjectOfType<GameStatus>();
+        this.gameStatus = FindObjectOfType<GameSession>();
         this.level.RegisterBlock();
     }
 

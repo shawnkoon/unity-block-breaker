@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class GameStatus : MonoBehaviour {
+public class GameSession : MonoBehaviour {
 
     [SerializeField]
     [Range(0.1f, 10f)]
@@ -18,6 +18,19 @@ public class GameStatus : MonoBehaviour {
     [SerializeField]
     private TextMeshProUGUI scoreText;
 
+    private void Awake()
+    {
+        int thisCount = FindObjectsOfType<GameSession>().Length;
+        if (thisCount > 1)
+        {
+            this.DestoryGameSession();
+        }
+        else
+        {
+            DontDestroyOnLoad(this.gameObject);
+        }
+    }
+
     private void Start()
     {
         this.scoreText.text = this.currentScore.ToString();
@@ -29,5 +42,11 @@ public class GameStatus : MonoBehaviour {
     {
         this.currentScore += this.scoreScale;
         this.scoreText.text = this.currentScore.ToString();
+    }
+
+    public void DestoryGameSession()
+    {
+        this.gameObject.SetActive(false);
+        Destroy(this.gameObject);
     }
 }
