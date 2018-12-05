@@ -7,6 +7,9 @@ public class Block : MonoBehaviour
     [SerializeField]
     private AudioClip destroySound;
 
+    [SerializeField]
+    private GameObject blockSparkleVFX;
+
     private Level level;
     private GameSession gameStatus;
 
@@ -21,7 +24,14 @@ public class Block : MonoBehaviour
     {
         AudioSource.PlayClipAtPoint(destroySound, Camera.main.transform.position);
         Destroy(this.gameObject);
+        this.SparkleBlock();
         this.gameStatus.IncrementScore();
         this.level.UnRegisterBlock();
+    }
+
+    public void SparkleBlock()
+    {
+        var sparkleObject = Instantiate(this.blockSparkleVFX, this.transform.position, this.transform.rotation);
+        Destroy(sparkleObject, 1f);
     }
 }
