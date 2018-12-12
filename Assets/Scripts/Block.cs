@@ -17,16 +17,22 @@ public class Block : MonoBehaviour
     {
         this.level = FindObjectOfType<Level>();
         this.gameStatus = FindObjectOfType<GameSession>();
-        this.level.RegisterBlock();
+        if (this.tag == "Breakable")
+        {
+            this.level.RegisterBlock();
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        AudioSource.PlayClipAtPoint(destroySound, Camera.main.transform.position);
-        Destroy(this.gameObject);
-        this.SparkleBlock();
-        this.gameStatus.IncrementScore();
-        this.level.UnRegisterBlock();
+        if (this.tag == "Breakable")
+        {
+            AudioSource.PlayClipAtPoint(destroySound, Camera.main.transform.position);
+            Destroy(this.gameObject);
+            this.SparkleBlock();
+            this.gameStatus.IncrementScore();
+            this.level.UnRegisterBlock();
+        }
     }
 
     public void SparkleBlock()

@@ -23,8 +23,8 @@ GameObject:
   - component: {fileID: 61070831077639496}
   - component: {fileID: 114685262715686736}
   m_Layer: 0
-  m_Name: Block
-  m_TagString: Untagged
+  m_Name: BreakableBlock
+  m_TagString: Breakable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroySound: {fileID: 8300000, guid: d08df905fc769419b862240ae8415334, type: 3}
-  level: {fileID: 114768902856323082, guid: ff589788616744fed9bec397ce00acaa, type: 2}
+  blockSparkleVFX: {fileID: 100000, guid: 7d846c02296ef4dc4abff04ce3e5262c, type: 2}
 --- !u!212 &212785847644269318
 SpriteRenderer:
   m_ObjectHideFlags: 1
