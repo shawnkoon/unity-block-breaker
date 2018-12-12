@@ -80,6 +80,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroySound: {fileID: 8300000, guid: d08df905fc769419b862240ae8415334, type: 3}
   blockSparkleVFX: {fileID: 100000, guid: 7d846c02296ef4dc4abff04ce3e5262c, type: 2}
+  health: 3
 --- !u!212 &212785847644269318
 SpriteRenderer:
   m_ObjectHideFlags: 1

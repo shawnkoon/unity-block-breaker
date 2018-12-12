@@ -10,6 +10,12 @@ public class Block : MonoBehaviour
     [SerializeField]
     private GameObject blockSparkleVFX;
 
+    [SerializeField]
+    private int health;
+
+    [SerializeField]
+    private Sprite[] blockSprites;
+
     private Level level;
     private GameSession gameStatus;
 
@@ -28,10 +34,18 @@ public class Block : MonoBehaviour
         if (this.tag == "Breakable")
         {
             AudioSource.PlayClipAtPoint(destroySound, Camera.main.transform.position);
-            Destroy(this.gameObject);
-            this.SparkleBlock();
-            this.gameStatus.IncrementScore();
-            this.level.UnRegisterBlock();
+            this.health--;
+            if (this.health == 0)
+            {
+                Destroy(this.gameObject);
+                this.SparkleBlock();
+                this.gameStatus.IncrementScore();
+                this.level.UnRegisterBlock();
+            }
+            else
+            {
+                GetComponent<SpriteRenderer>().sprite = this.blockSprites[this.health - 1];
+            }
         }
     }
 
