@@ -13,6 +13,8 @@ public class Ball : MonoBehaviour
     private float yPush = 15f;
     [SerializeField]
     private AudioClip[] audios;
+    [SerializeField]
+    private float randomFactor = 0.2f;
 
     private Vector2 paddleAndBallOffset;
     private bool ballResting;
@@ -55,6 +57,9 @@ public class Ball : MonoBehaviour
         {
             AudioClip randomAudio = this.audios[Random.Range(0, this.audios.Length)];
             this.audioSource.PlayOneShot(randomAudio);
+            this.rigidBodySource.velocity += new Vector2(
+                Random.Range(0, this.randomFactor),
+                Random.Range(0, this.randomFactor));
         }
     }
 }
