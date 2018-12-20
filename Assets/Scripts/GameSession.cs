@@ -17,6 +17,8 @@ public class GameSession : MonoBehaviour {
 
     [SerializeField]
     private TextMeshProUGUI scoreText;
+    [SerializeField]
+    private bool isAutoPlayEnabled = false;
 
     private void Awake()
     {
@@ -49,4 +51,6 @@ public class GameSession : MonoBehaviour {
         this.gameObject.SetActive(false);
         Destroy(this.gameObject);
     }
+
+    public bool IsAutoPlayEnabled() => this.isAutoPlayEnabled;
 }
